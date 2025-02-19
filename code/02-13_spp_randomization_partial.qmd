@@ -87,7 +87,7 @@ sp_rcbd_rand
 
 ## Joining WP and SP into one object
 
-```{r spp_rcbd_rand}
+```{r spp_rcbd_rand, message=FALSE}
 spp_rcbd_rand <- wp_rcbd_rand %>%
   right_join(sp_rcbd_rand) %>%
   mutate(trtname = paste0(krate_kgha,"+",nrate_kgha))
@@ -129,10 +129,10 @@ spp_rcbd_layout
 
 Now, let's plot it.
 
-```{r spp rcbd map}
+```{r spp rcbd map, warning=FALSE}
 ggplot(data = spp_rcbd_layout, aes(x = row, 
                                    y = -col)) +
-  geom_tile(aes(fill = factor(nrate_kgha),color = "black",show.legend = F)) +
+  geom_tile(aes(fill = factor(nrate_kgha)),color = "black",show.legend = F) +
   geom_tile(aes(color = factor(krate_kgha)),show.legend = F,size = 2,linetype = 2,fill = NA) +
   scale_color_viridis_d(option="mako") +
 
